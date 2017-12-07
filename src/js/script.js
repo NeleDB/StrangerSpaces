@@ -121,7 +121,7 @@ const init = () => {
     transformNet.load().then(
       () => {
         startButton.innerText = `Processing image`;
-        //runInference();
+        runInference();
         startButton.innerText = `Start style transfer button`;
         startButton.disabled = false;
       }
@@ -135,7 +135,7 @@ const init = () => {
     });
   });
 
-  async () => {
+  const runInference = async () => {
     //hier ergens nog runInference(); declareren!!!!
     await math.scope(async (keep, track) => {
       const preprocessed = track(Array3D.fromPixels(this.contentImgElement));
