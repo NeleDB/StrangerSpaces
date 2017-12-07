@@ -149,6 +149,7 @@ const init = () => {
     });
   };
 
+
   const setCanvasShape = shape => {
     console.log(shape);
     canvas.width = shape[1];
@@ -162,5 +163,7 @@ const init = () => {
     }
   };
 };
+
+
 
 init();
