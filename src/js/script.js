@@ -1,6 +1,7 @@
 // import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn';
 // import {TransformNet} from './net';
 // import {PolymerElement, PolymerHTMLElement} from './polymer-spec';
+import 'babel-polyfill'; //eslint-disable-line
 
 import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
 import {TransformNet} from './net';
@@ -136,19 +137,17 @@ const init = () => {
   });
 
   const runInference = async () => {
-    //hier ergens nog runInference(); declareren!!!!
     await math.scope(async (keep, track) => {
-      const preprocessed = track(Array3D.fromPixels(this.contentImgElement));
+      const preprocessed = track(Array3D.fromPixels(contentImgElement));
 
       const inferenceResult = await transformNet.predict(preprocessed);
       setCanvasShape(inferenceResult.shape);
       const renderShader = render_ndarray_gpu_util.getRenderRGBShader( //eslint-disable-line
-          this.gpgpu, inferenceResult.shape[1]);
+          gpgpu, inferenceResult.shape[1]);
       render_ndarray_gpu_util.renderToCanvas( //eslint-disable-line
           gpgpu, renderShader, inferenceResult.getTexture());
     });
   };
-
 
   const setCanvasShape = shape => {
     console.log(shape);
@@ -163,7 +162,5 @@ const init = () => {
     }
   };
 };
-
-
 
 init();
