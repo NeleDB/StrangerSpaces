@@ -38,7 +38,7 @@ const init = () => {
   contentImgElement.height = 250;
 
   const styleNames = STYLE_NAMES;//eslint-disable-line
-  let selectedStyleName = `Udnie, Francis Picabia`;//eslint-disable-line
+  let selectedStyleName = STYLE_MAPPINGS['Udnie, Francis Picabia'];//eslint-disable-line
   styleImgElement.src = `../assets/img/udnie.jpg`;
   styleImgElement.height = 250;
 
