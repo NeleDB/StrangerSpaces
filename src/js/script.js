@@ -4,7 +4,7 @@
 import 'babel-polyfill'; //eslint-disable-line
 
 import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
-import {TransformNet} from './net';
+import TransformNet from './net';
 const IDLE = 1;
 // const TRAINING = 2;
 
@@ -119,6 +119,7 @@ const init = () => {
     startButton.innerText = `Starting style transfer.. Downloading + running model`;
     startButton.disabled = true;
     transformNet.setStyle(STYLE_MAPPINGS[selectedStyleName]);
+    //console.log(selectedStyleName);
     transformNet.load().then(
       () => {
         startButton.innerText = `Processing image`;
