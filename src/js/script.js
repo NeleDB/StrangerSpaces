@@ -38,7 +38,7 @@ const init = () => {
   contentImgElement.height = 250;
 
   const styleNames = STYLE_NAMES;//eslint-disable-line
-  const selectedStyleName = `Udnie, Francis Picabia`;//eslint-disable-line
+  let selectedStyleName = `Udnie, Francis Picabia`;//eslint-disable-line
   styleImgElement.src = `../assets/img/udnie.jpg`;
   styleImgElement.height = 250;
 
@@ -56,14 +56,23 @@ const init = () => {
     fileSelect.value = ``;
   });
 
+  const styleDropdown = document.querySelector(`.style-dropdown`);
+  for (let i = 0;i < STYLE_NAMES.length;i ++) {
+    const option = document.createElement(`option`);
+    option.value = STYLE_NAMES[i];
+    option.label = STYLE_NAMES[i];
+    styleDropdown.appendChild(option);
+  }
+
   const fileSelectButton = document.querySelector(`.file-upload`);
   fileSelectButton.addEventListener(`click`, () => {
     fileSelect.click();
   });
 
-  const styleDropdown = document.querySelector(`.style-dropdown`);
-  styleDropdown.addEventListener(`click`, e => {
-    console.log(e.currentTarget);
+  styleDropdown.addEventListener(`change`, e => {
+    const selectedDropdown = e.currentTarget.value;
+    selectedStyleName = STYLE_MAPPINGS[selectedDropdown];
+    styleImgElement.src = `../assets/img/${selectedStyleName}.jpg`;
   });
 
   const startButton = document.querySelector(`.start`);
@@ -71,8 +80,8 @@ const init = () => {
     document.querySelector(`.load-error-message`).style.display = `none`;
     startButton.innerText = `Starting style transfer.. Downloading + running model`;
     startButton.disabled = true;
-    transformNet.setStyle(STYLE_MAPPINGS[selectedStyleName]);
-    //console.log(selectedStyleName);
+    transformNet.setStyle(selectedStyleName);
+
     transformNet.load().then(
       () => {
         startButton.innerText = `Processing image`;
