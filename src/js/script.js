@@ -1,14 +1,8 @@
-// import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn';
-// import {TransformNet} from './net';
-// import {PolymerElement, PolymerHTMLElement} from './polymer-spec';
 import 'babel-polyfill'; //eslint-disable-line
 
 import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
 import TransformNet from './net';
-const IDLE = 1;
-// const TRAINING = 2;
 
-const CONTENT_NAMES = `Upload from file`;
 const STYLE_MAPPINGS = {
   'Udnie, Francis Picabia': `udnie`,
   'The Scream, Edvard Munch': `scream`,
@@ -21,28 +15,22 @@ const STYLE_NAMES = Object.keys(STYLE_MAPPINGS);
 
 const init = () => {
   const canvas = document.querySelector(`.imageCanvas`);
-  const gl = gpgpu_util.createWebGLContext(canvas);//eslint-disable-line
+  const gl = gpgpu_util.createWebGLContext(canvas); //eslint-disable-line
   const gpgpu = new GPGPUContext(gl);
   const math = new NDArrayMathGPU(gpgpu);
-  const mathCPU = new NDArrayMathCPU();//eslint-disable-line
-
-  const applicationState = IDLE;//eslint-disable-line
-  const status = ``;//eslint-disable-line
+  const mathCPU = new NDArrayMathCPU(); //eslint-disable-line
 
   const contentImgElement = document.querySelector(`.contentImg`);
   const styleImgElement = document.querySelector(`.styleImg`);
 
-  const contentNames = CONTENT_NAMES;//eslint-disable-line
-  const selectedContentName = `stata`;//eslint-disable-line
   contentImgElement.src = `../assets/img/stata.jpg`;
   contentImgElement.height = 250;
 
-  const styleNames = STYLE_NAMES;//eslint-disable-line
-  let selectedStyleName = STYLE_MAPPINGS['Udnie, Francis Picabia'];//eslint-disable-line
+  let selectedStyleName = STYLE_MAPPINGS[`Udnie, Francis Picabia`];
   styleImgElement.src = `../assets/img/udnie.jpg`;
   styleImgElement.height = 250;
 
-  const transformNet = new TransformNet(math, STYLE_MAPPINGS[selectedStyleName]);//eslint-disable-line
+  const transformNet = new TransformNet(math, STYLE_MAPPINGS[selectedStyleName]);
 
   const fileSelect = document.querySelector(`.fileSelect`);
   fileSelect.addEventListener(`change`, e => {
