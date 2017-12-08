@@ -5,10 +5,15 @@ html {
 }
 
 body {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: Benguiat;
   margin: 0;
-  width: 100%;
-  height: 100%;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/771828/background.jpg);
+  background-size: 100;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-flow: row wrap;
 }
 
 head {
@@ -16,10 +21,37 @@ head {
   width: 0;
 }
 
+.hide {
+  display: none;
+}
+
+.txt-test {
+  font-size: 1.2rem;
+  font-family: Futura;
+  color: white;
+  width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .pagewrap {
-  padding: 5px;
-  width: 960px;
-  margin: 20px auto;
+  position: relative;
+  margin-top: 30rem;
+  z-index: 1;
+  width: 100vw;
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    background: url(../assets/img/noise.gif);
+    background-repeat: repeat;
+    margin-top: -50rem;
+    height: 100vh;
+    width: 100%;
+    opacity: .07;
+  }
+
 }
 
 header {
@@ -43,7 +75,7 @@ header {
 }
 
 footer {
-  clear: both;
+  /*clear: both;*/
   padding: 0 15px;
 }
 

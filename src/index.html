@@ -4,27 +4,50 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.8/dialog-polyfill.min.js"></script>
-  <title>Stranger Depths</title>
+  <title>Stranger Things</title>
+  <script>
+  WebFontConfig = {
+    custom: {
+      families: [
+        'Benguiat'
+      ],
+      urls: [
+        './assets/fonts/benguiat/benguiat.css'
+      ]
+    }
+  };
+
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'js/webfontloader.js';
+    wf.type = 'text/javascript';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+  </script>
 </head>
 <body>
   <div class="style-tranfer-container"></div>
     <div class="pagewrap">
       <section class="content">
         <div class="imgContainer" align="middle">
-          <img class="contentImg"/>
-          <div class="file-upload" align="middle" label="Content">
-            <button class="button" primary raised>Select image</button>
-          </div>
+          <img class="contentImg hide"/>
         </div>
       </section>
-
       <section class="style">
         <div class="imgContainer" align="middle">
-          <img class="styleImg"/>
-          <select class="style-dropdown dropdown-content">
+          <img class="styleImg hide"/>
+          <select class="style-dropdown dropdown-content hide">
           </select>
         </div>
       </section>
+
+      <div class='explainer'>
+        <p class='txt-test'>What would your room look like if it were in the Upside Down? Upload your photo and find out!</p>
+        <div class="file-upload" align="middle" label="Content">
+          <button class="button" primary raised>Select image</button>
+        </div>
+      </div>
 
       <footer>
         <div class="train-button-container" align="middle">
