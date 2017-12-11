@@ -29,38 +29,43 @@
 <body>
   <div class="style-tranfer-container"></div>
     <div class="pagewrap">
-      <section class="content">
-        <div class="imgContainer" align="middle">
-          <img class="contentImg hide"/>
-        </div>
-      </section>
-      <section class="style">
-        <div class="imgContainer" align="middle">
-          <img class="styleImg hide"/>
-          <select class="style-dropdown dropdown-content hide">
-          </select>
-        </div>
-      </section>
-
-      <div class='explainer'>
-        <p class='txt-test'>What would your room look like if it were in the Upside Down? Upload your photo and find out!</p>
-        <div class="file-upload" align="middle" label="Content">
-          <button class="button" primary raised>Select image</button>
-        </div>
+      <div class='stranger-logo'>
+        <img src="./assets/img/logo.png" alt="">
       </div>
 
-      <footer>
-        <div class="train-button-container" align="middle">
-          <input type="button" primary raised class="start" value="Start Style Transfer"></input>
+      <section class='about'>
+        <p class='about-txt'>Always wanted to know what your room would look like in the Upside Down? Upload a 360° picture and experience it now.</p>
+        <div class="load-btns">
+          <div class="file-upload" label="Content">
+            <button class="button select-btn" label='Content' primary raised>Select 360° Image</button>
+          </div>
+          <input type="button" primary raised class="start start-btn" value="STRANGERIFY MY ROOM"></input>
         </div>
-        <div class="canvasContainer" align="middle">
+      </section>
+
+      <section class='style-images'>
+        <div class="content">
+          <div class="imgContainer hide">
+            <img class="contentImg "/>
+          </div>
+        </div>
+        <div class="style">
+          <div class="imgContainer hide">
+            <img class="styleImg "/>
+          </div>
+          <select class="style-dropdown dropdown-content hide"></select>
+        </div>
+      </section>
+
+      <footer>
+        <div class="canvasContainer">
           <canvas class="imageCanvas" width="1" height="1"></canvas>
         </div>
       </footer>
     </div>
 
     <input type="file" class="fileSelect" style="display: none" accept="image/x-png,image/gif,image/jpeg"/>
-    <!-- <canvas class="hiddenCanvas" style="display: none"></canvas> -->
+    <!-- <canvas class="hiddenCanvas" style="display: none"></canvas -->
     <div class="load-error-message" style="display: none">
       We could not find a webcam, attach one to view the full demo!
     </div>
