@@ -69,6 +69,8 @@ const init = () => {
     startButton.innerText = `Starting style transfer.. Downloading + running model`;
     startButton.disabled = true;
     transformNet.setStyle(selectedStyleName);
+    const spinner = document.querySelector(`.spinner`);
+    spinner.classList.remove(`hide`);
 
     transformNet.load().then(
       () => {
@@ -76,6 +78,7 @@ const init = () => {
         runInference();
         startButton.innerText = `Start style transfer button`;
         startButton.disabled = false;
+        spinner.classList.add(`hide`);
       }
     ).catch(error => {
       console.log(error);
