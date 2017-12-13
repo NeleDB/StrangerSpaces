@@ -128,6 +128,25 @@ article p {
   margin-right: auto;
 }
 
+.vr {
+  width: 100%;
+  height: 20rem;
+}
+
+.content-vr {
+  width: 70%;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.5em;
+  font-size: 1.1em;
+}
+
+ #container, #your-pano { /*stylelint-disable-line */
+  width: 70%;
+  height: 0;
+  margin: 0 auto;
+}
+
 @media (min-width: 1180px) {
 
   .l--page {

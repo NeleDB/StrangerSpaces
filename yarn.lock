@@ -2157,6 +2157,10 @@ cwebp-bin@^3.1.0:
     bin-wrapper "^3.0.1"
     logalot "^2.0.0"
 
+d.js@~0.7.3:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/d.js/-/d.js-0.7.5.tgz#06e8b8c4f6ae979c4b817c321894ce2e1f5fa90e"
+
 d@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/d/-/d-1.0.0.tgz#754bb5bfe55451da69a58b94d45f4c5b0462d58f"
@@ -2486,6 +2490,10 @@ dot-case@^2.1.0:
   resolved "https://registry.yarnpkg.com/dot-case/-/dot-case-2.1.1.tgz#34dcf37f50a8e93c2b3bca8bb7fb9155c7da3bee"
   dependencies:
     no-case "^2.2.0"
+
+dot@>=1.0.3:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/dot/-/dot-1.1.2.tgz#c7377019fc4e550798928b2b9afeb66abfa1f2f9"
 
 download@^4.0.0, download@^4.1.2:
   version "4.4.3"
@@ -5609,6 +5617,15 @@ performance-now@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
+photo-sphere-viewer@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/photo-sphere-viewer/-/photo-sphere-viewer-3.2.3.tgz#877b5777cfec78efbb025ba0d30c27378386e9e6"
+  dependencies:
+    d.js "~0.7.3"
+    dot ">=1.0.3"
+    three ">= 0.70.0"
+    uevent "~1.0.0"
+
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -7579,6 +7596,10 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
+"three@>= 0.70.0":
+  version "0.88.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.88.0.tgz#4256c2fc38e4fb23a0d23eba2b6cce4df8e466d5"
+
 through2-filter@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/through2-filter/-/through2-filter-2.0.0.tgz#60bc55a0dacb76085db1f9dae99ab43f83d622ec"
@@ -7802,6 +7823,10 @@ typescript@2.4.2:
 typical@^2.6.0, typical@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/typical/-/typical-2.6.1.tgz#5c080e5d661cbbe38259d2e70a3c7253e873881d"
+
+uevent@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/uevent/-/uevent-1.0.0.tgz#2948a2d441d179000470e21aed126c67b000976c"
 
 uglify-js@2.6.x:
   version "2.6.4"

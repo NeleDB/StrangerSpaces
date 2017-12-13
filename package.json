@@ -41,6 +41,7 @@
     "postcss-loader": "^1.2.1",
     "postcss-reporter": "^3.0.0",
     "postcss-will-change": "^1.1.0",
+    "photo-sphere-viewer": "^3.2.3",
     "rimraf": "^2.5.4",
     "style-loader": "^0.17.0",
     "stylelint": "^7.8.0",
@@ -55,6 +56,10 @@
     "webpack": "^2.2.0",
     "webpack-config-htmls": "^1.0.1",
     "webpack-config-utils": "^2.3.0",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-server": "^2.4.1",
+
+    "d.js": "~0.7.3",
+    "uevent": "~1.0.0",
+    "dot": ">=1.0.3"
   }
 }

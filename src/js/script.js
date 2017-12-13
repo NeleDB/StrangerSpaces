@@ -2,6 +2,7 @@ import 'babel-polyfill'; //eslint-disable-line
 
 import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
 import TransformNet from './net';
+import VR from './vr';
 
 const STYLE_MAPPINGS = {
   'Udnie, Francis Picabia': `udnie`,
@@ -97,12 +98,13 @@ const init = () => {
           gpgpu, inferenceResult.shape[1]);
       render_ndarray_gpu_util.renderToCanvas( //eslint-disable-line
           gpgpu, renderShader, inferenceResult.getTexture());
+
+      const vr = new VR(canvas.toDataURL()); //eslint-disable-line
     });
   };
 
 
   const setCanvasShape = shape => {
-    console.log(shape);
     canvas.width = shape[1];
     canvas.height = shape[0];
     if (shape[1] > shape[0]) {
