@@ -56,6 +56,7 @@ const config = {
     contentBase: `./src`,
     historyApiFallback: true, // react-router
     hot: true,
+    host: `0.0.0.0`,
 
     overlay: {
       errors: true,
@@ -168,7 +169,7 @@ const config = {
 
     ifDevelopment(new HotModuleReplacementPlugin()),
 
-    
+
 
     ifProduction(copy),
     ifProduction(extractCSS),

@@ -4,6 +4,8 @@ import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathC
 import TransformNet from './net';
 import VR from './vr';
 
+import VR from './classes/vr.js';
+
 const STYLE_MAPPINGS = {
   'Udnie, Francis Picabia': `udnie`,
   'The Scream, Edvard Munch': `scream`,
@@ -12,7 +14,6 @@ const STYLE_MAPPINGS = {
   'The Wave, Katsushika Hokusai': `wave`,
   'The Wreck of the Minotaur, J.M.W. Turner': `wreck`
 };
-const STYLE_NAMES = Object.keys(STYLE_MAPPINGS);
 
 const init = () => {
   const canvas = document.querySelector(`.imageCanvas`);
@@ -21,15 +22,17 @@ const init = () => {
   const math = new NDArrayMathGPU(gpgpu);
   const mathCPU = new NDArrayMathCPU(); //eslint-disable-line
 
+  const aboutText = document.querySelector(`.about-txt`);
+  const aboutBtnStart = document.querySelector(`.start-btn`);
+  const logoAnim = document.querySelector(`.stranger-logo`);
+  const backBtn = document.querySelector(`.back-btn`);
+
   const contentImgElement = document.querySelector(`.contentImg`);
-  const styleImgElement = document.querySelector(`.styleImg`);
 
   contentImgElement.src = `../assets/img/stata.jpg`;
   contentImgElement.height = 250;
 
-  let selectedStyleName = STYLE_MAPPINGS[`Udnie, Francis Picabia`];
-  styleImgElement.src = `../assets/img/udnie.jpg`;
-  styleImgElement.height = 250;
+  const selectedStyleName = STYLE_MAPPINGS[`The Wreck of the Minotaur, J.M.W. Turner`];
 
   const transformNet = new TransformNet(math, STYLE_MAPPINGS[selectedStyleName]);
 
@@ -45,31 +48,12 @@ const init = () => {
     fileSelect.value = ``;
   });
 
-  const styleDropdown = document.querySelector(`.style-dropdown`);
-  for (let i = 0;i < STYLE_NAMES.length;i ++) {
-    const option = document.createElement(`option`);
-    option.value = STYLE_NAMES[i];
-    option.label = STYLE_NAMES[i];
-    styleDropdown.appendChild(option);
-  }
-
-  const fileSelectButton = document.querySelector(`.file-upload`);
-  fileSelectButton.addEventListener(`click`, () => {
-    fileSelect.click();
-  });
-
-  styleDropdown.addEventListener(`change`, e => {
-    const selectedDropdown = e.currentTarget.value;
-    selectedStyleName = STYLE_MAPPINGS[selectedDropdown];
-    styleImgElement.src = `../assets/img/${selectedStyleName}.jpg`;
-  });
-
   const startButton = document.querySelector(`.start`);
   startButton.addEventListener(`click`, () => {
-    document.querySelector(`.load-error-message`).style.display = `none`;
-    startButton.innerText = `Starting style transfer.. Downloading + running model`;
-    startButton.disabled = true;
     transformNet.setStyle(selectedStyleName);
+    const spinner = document.querySelector(`.spinner`);
+    spinner.classList.remove(`hide`);
+    imageDone();
 
     transformNet.load().then(
       () => {
@@ -77,16 +61,20 @@ const init = () => {
         runInference();
         startButton.innerText = `Start style transfer button`;
         startButton.disabled = false;
+        spinner.classList.add(`hide`);
       }
     ).catch(error => {
       console.log(error);
       startButton.innerText = `Start style transfer`;
       startButton.disabled = false;
-      const errMessage = document.querySelector(`.load-error-message`);
-      errMessage.innerText = error;
-      errMessage.style.display = `block`;
     });
   });
+
+  const imageDone = () => {
+    aboutText.classList.add(`hide`);
+    aboutBtnStart.classList.add(`hide`);
+    logoAnim.classList.add(`logo-reversefade`);
+  };
 
   const runInference = async () => {
     await math.scope(async (keep, track) => {
@@ -99,8 +87,26 @@ const init = () => {
       render_ndarray_gpu_util.renderToCanvas( //eslint-disable-line
           gpgpu, renderShader, inferenceResult.getTexture());
 
-      const vr = new VR(canvas.toDataURL()); //eslint-disable-line
+      new VR(canvas.toDataURL());
+
+      showBackbutton();
     });
+  };
+
+  const showBackbutton = () => {
+
+    backBtn.classList.remove(`hide`);
+
+    backBtn.addEventListener(`click`, showBegin);
+
+  };
+
+  const showBegin = () => {
+    aboutText.classList.remove(`hide`);
+    aboutBtnStart.classList.remove(`hide`);
+    logoAnim.classList.remove(`logo-reversefade`);
+    backBtn.classList.add(`hide`);
+    document.body.removeChild(document.querySelector(`.vr`));
   };
 
 

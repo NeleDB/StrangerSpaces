@@ -4,46 +4,65 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.8/dialog-polyfill.min.js"></script>
-  <title>Stranger Depths</title>
+  <title>Stranger Things</title>
+  <script>
+  WebFontConfig = {
+    custom: {
+      families: [
+        'Benguiat'
+      ],
+      urls: [
+        './assets/fonts/benguiat/benguiat.css'
+      ]
+    }
+  };
+
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'js/webfontloader.js';
+    wf.type = 'text/javascript';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+  </script>
 </head>
 <body>
   <div class="style-tranfer-container"></div>
+    <div id='world'></div>
+    <div class="spinner hide">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
     <div class="pagewrap">
-      <section class="content">
-        <div class="imgContainer" align="middle">
-          <img class="contentImg"/>
-          <div class="file-upload" align="middle" label="Content">
-            <button class="button" primary raised>Select image</button>
+      <div class='stranger-logo'>
+        <img src="./assets/img/logo.png" alt="">
+      </div>
+
+      <section class='about'>
+        <p class='about-txt'>Always wanted to know what your room would look like in the Upside Down? Upload a 360° picture and experience it now.</p>
+        <div class="load-btns">
+              <input type="file" class="fileSelect"  accept="image/x-png,image/gif,image/jpeg"/>
+          <input type="button" primary raised class="start start-btn" value="STRANGERIFY MY ROOM"></input>
+        </div>
+      </section>
+      <button type="button" class='button back-btn hide'>Go Back</button>
+      <section class='style-images'>
+        <div class="content">
+          <div class="imgContainer hide">
+            <img class="contentImg "/>
           </div>
         </div>
       </section>
-
-      <section class="style">
-        <div class="imgContainer" align="middle">
-          <img class="styleImg"/>
-          <select class="style-dropdown dropdown-content">
-          </select>
-        </div>
-      </section>
-
       <footer>
-        <div class="train-button-container" align="middle">
-          <input type="button" primary raised class="start" value="Start Style Transfer"></input>
-        </div>
-        <div class="canvasContainer" align="middle">
+        <div class="canvasContainer hide">
           <canvas class="imageCanvas" width="1" height="1"></canvas>
         </div>
       </footer>
     </div>
 
-    <input type="file" class="fileSelect" style="display: none" accept="image/x-png,image/gif,image/jpeg"/>
-    <!-- <canvas class="hiddenCanvas" style="display: none"></canvas> -->
-    <div class="load-error-message" style="display: none">
-      We could not find a webcam, attach one to view the full demo!
-    </div>
+  <script type="text/javascript" src="js/three.min.js"></script>
+  <script src="js/classes/particles.js"></script>
 
-    <div class="vr"></div>
-
-    <script src="js/lib/three.min.js"></script>
 </body>
 </html>
