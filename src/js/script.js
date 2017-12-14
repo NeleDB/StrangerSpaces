@@ -2,6 +2,7 @@ import 'babel-polyfill'; //eslint-disable-line
 
 import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
 import TransformNet from './net';
+import VR from './vr';
 
 import VR from './classes/vr.js';
 
@@ -89,7 +90,6 @@ const init = () => {
       new VR(canvas.toDataURL());
 
       showBackbutton();
-
     });
   };
 
@@ -111,7 +111,6 @@ const init = () => {
 
 
   const setCanvasShape = shape => {
-    console.log(shape);
     canvas.width = shape[1];
     canvas.height = shape[0];
     if (shape[1] > shape[0]) {
