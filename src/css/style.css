@@ -190,11 +190,6 @@ input:focus {
   40% { transform: scale(1); }
 }
 
-  0%, 80%, 100% { transform: scale(0); }
-
-  40% { transform: scale(1); }
-}
-
 .vr {
   position: absolute;
   z-index: -1;

@@ -2,7 +2,6 @@ import 'babel-polyfill'; //eslint-disable-line
 
 import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
 import TransformNet from './net';
-import VR from './vr';
 
 import VR from './classes/vr.js';
 
