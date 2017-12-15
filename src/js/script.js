@@ -5,14 +5,7 @@ import TransformNet from './net';
 
 import VR from './classes/vr.js';
 
-const STYLE_MAPPINGS = {
-  'Udnie, Francis Picabia': `udnie`,
-  'The Scream, Edvard Munch': `scream`,
-  'La Muse, Pablo Picasso': `la_muse`,
-  'Rain Princess, Leonid Afremov': `rain_princess`,
-  'The Wave, Katsushika Hokusai': `wave`,
-  'The Wreck of the Minotaur, J.M.W. Turner': `wreck`
-};
+import {STYLE_MAPPINGS, getRandomStyle} from './lib/transferableStyles';
 
 const init = () => {
   const canvas = document.querySelector(`.imageCanvas`);
@@ -31,19 +24,31 @@ const init = () => {
   contentImgElement.src = `../assets/img/stata.jpg`;
   contentImgElement.height = 250;
 
-  const selectedStyleName = STYLE_MAPPINGS[`The Wreck of the Minotaur, J.M.W. Turner`];
+  const selectedStyleName = getRandomStyle();
 
   const transformNet = new TransformNet(math, STYLE_MAPPINGS[selectedStyleName]);
 
   const fileSelect = document.querySelector(`.fileSelect`);
-  fileSelect.addEventListener(`change`, e => {
-    const f = e.target.files[0];
+  fileSelect.addEventListener(`change`, ({target}) => {
+    const file = target.files[0];
     const fileReader = new FileReader();
-    fileReader.addEventListener(`load`, e => {
-      const target = e.target;
+
+    const warningNode = document.querySelector(`.file-size-warning`);
+
+    if (warningNode.innerText.length > 0) warningNode.innerText = ``;
+
+    if (file.size > 1000000) {
+      const err = `File is larger than 1MB`;
+      warningNode.innerText = err;
+      throw new Error(err);
+    }
+
+    fileReader.addEventListener(`load`, ({target}) => {
       contentImgElement.src = target.result;
     });
-    fileReader.readAsDataURL(f);
+
+    // TODO: check readAsBinaryString, avoid limit for 1MB+ images
+    fileReader.readAsDataURL(file);
     fileSelect.value = ``;
   });
 
