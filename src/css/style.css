@@ -1,6 +1,6 @@
 @import 'vars.css';
 
-body {
+.background-desktop {
   font-family: Benguiat;
   background: url(../assets/img/bg.png), linear-gradient(rgba(2, 6, 22, 1) 0%, rgba(18, 50, 72, 1) 120%);
   background-size: 110%;
@@ -211,4 +211,20 @@ input:focus {
   &::before {
     content: '< ';
   }
+}
+
+.ui {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: Karla, sans-serif;
+  z-index: 1;
+}
+
+.magic-window {
+  display: block;
+  color: white;
+  margin-top: 1em;
 }

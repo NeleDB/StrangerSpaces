@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+
 let scene, fieldOfView, camera, aspectRatio, nearPlane, farPlane, HEIGHT, WIDTH,
   renderer, container, particle;
 
