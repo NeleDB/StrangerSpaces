@@ -186,7 +186,7 @@ const main = () => {
         const response = JSON.parse(xhr.responseText);
 
         const qr = qrcode(0, `M`);
-        qr.addData(`192.168.0.94:3000/client.html?id=${response.public_id}&format=${response.format}`);
+        qr.addData(`https://student.howest.be/lotte.bijlsma/20172018/EXW/client.html?id=${response.public_id}&format=${response.format}`);
         qr.make();
         createqr.innerHTML = qr.createImgTag();
         createqr.classList.remove(`hide`);
