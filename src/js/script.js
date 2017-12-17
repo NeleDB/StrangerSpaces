@@ -178,7 +178,7 @@ const main = () => {
         document.querySelector(`.client-link`).href = `/client.html?id=${response.public_id}&format=${response.format}`;
 
         const qr = qrcode(0, `M`);
-        qr.addData(`192.168.0.247:3000/client.html?id=${response.public_id}&format=${response.format}`);
+        qr.addData(`192.168.1.7:3000/client.html?id=${response.public_id}&format=${response.format}`);
         qr.make();
         document.getElementById(`placeHolder`).innerHTML = qr.createImgTag();
       }
