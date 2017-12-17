@@ -3,10 +3,15 @@
 .background-desktop {
   font-family: Benguiat;
   background: url(../assets/img/bg.png), linear-gradient(rgba(2, 6, 22, 1) 0%, rgba(18, 50, 72, 1) 120%);
-  background-size: 110%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: soft-light;
   height: 100vh;
+  overflow: hidden;
+}
+
+html {
+  overflow: hidden;
 }
 
 textarea:focus,
@@ -30,7 +35,7 @@ input:focus {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  margin-top: -8rem;
+  margin-top: -7rem;
 }
 
 .about-txt {
@@ -46,7 +51,7 @@ input:focus {
 .stranger-logo {
   align-self: center;
   animation: fade 4s forwards;
-  margin-top: -13rem;
+  margin-top: -11rem;
 }
 
 .logo-reversefade {
@@ -93,16 +98,17 @@ input:focus {
   }
 }
 
-.fileSelect {
+.fileSelect-btn {
   background: transparent;
-  color: #aaa;
-  border: 1px solid #aaa;
-  border-radius: 7px;
-  margin-top: 1rem;
-  margin-bottom: 4rem;
-  padding: .5rem;
+  color: #3e546f;
+  border: 1px solid #3e546f;
+  padding: .5rem 1rem;
+  font-family: Futura;
+  font-size: 1.1rem;
   margin-right: 4rem;
   cursor: pointer;
+  border-radius: 7px;
+  /* box-shadow: inset 0 0 10px 0 #4b6584, 0 0 25px 0 #4b6584; */
 }
 
 .start-btn {
@@ -116,6 +122,12 @@ input:focus {
   padding: .5rem 1rem;
   border-radius: 7px;
   box-shadow: inset 0 0 10px 0 rgba(245, 86, 54, .8), 0 0 25px 0 rgba(245, 86, 54, .8);
+}
+
+.start-btn:disabled {
+  color: rgba(150, 150, 150, .3);
+  box-shadow: inset 0 0 10px 0 rgba(150, 150, 150, .2), 0 0 25px 0 rgba(150, 150, 150, .2);
+  border: 1px solid rgba(150, 150, 150, .2);
 }
 
 .load-btns {
@@ -139,7 +151,7 @@ input:focus {
     background: url(../assets/img/noise.gif);
     background-repeat: repeat;
     height: 100vh;
-    width: 100%;
+    width: 110%;
     opacity: .09;
   }
 
@@ -193,18 +205,22 @@ input:focus {
 .vr {
   position: absolute;
   z-index: -1;
-  left: calc(100vw / 6);
-  top: 14%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 .back-btn {
   position: absolute;
-  top: 3%;
+  top: 4%;
   left: 3%;
-  color: var(--bg-color);
+  color: transparent;
   background: transparent;
+  text-shadow: 0 0 1px rgba(255, 255, 255, .9);
+  opacity: .5;
   border: none;
   font-family: Futura;
+  font-size: 1rem;
   z-index: 4;
   cursor: pointer;
 
@@ -227,4 +243,23 @@ input:focus {
   display: block;
   color: white;
   margin-top: 1em;
+}
+
+.createQR {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 100000;
+  bottom: 5%;
+  right: 4%;
+  opacity: .5;
+}
+
+.exp-span {
+  margin-top: .5rem;
+  font-size: .8rem;
+  font-family: Futura;
+  color: rgba(255, 255, 255, .8);
 }

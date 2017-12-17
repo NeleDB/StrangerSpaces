@@ -1,18 +1,27 @@
-import 'babel-polyfill'; //eslint-disable-line
+/* eslint-disable camelcase*/
 
-import {Array3D, GPGPUContext, gpgpu_util, render_ndarray_gpu_util, NDArrayMathCPU, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
+import 'babel-polyfill';
+import {
+  Array3D,
+  GPGPUContext,
+  gpgpu_util,
+  render_ndarray_gpu_util,
+  NDArrayMathCPU,
+  NDArrayMathGPU
+} from 'deeplearn';
+
 import TransformNet from './net';
 import qrcode from 'qrcode-generator';
-
 import cloudinary from 'cloudinary-core';
 
 const cloudName = `dyvwrz9yg`;
 const unsignedUploadPreset = `vazbjvyr`;
 
 import VR from './classes/vr.js';
-// import mobileVR from './classes/mobilevr';
+import Particles from './classes/Particles.js';
 
-import {STYLE_MAPPINGS, getRandomStyle} from './lib/transferableStyles';
+const STYLE_MAPPINGS = {'Stranger Things': `stranger`};
+
 
 const init = () => {
   if (window.location.pathname === `/client.html`) {
@@ -21,9 +30,6 @@ const init = () => {
     main();
   }
 };
-
-
-
 
 const mobile = () => {
   console.log(`hello client`);
@@ -35,28 +41,30 @@ const mobile = () => {
   const src = `https://res.cloudinary.com/${cloudName}/image/upload/${id}.${format}`;
   console.log(src);
   img.setAttribute(`src`, src);
-  // new mobileVR(src);
-
 };
 
 const main = () => {
+  new Particles();
   const canvas = document.querySelector(`.imageCanvas`);
-  const gl = gpgpu_util.createWebGLContext(canvas); //eslint-disable-line
+  const gl = gpgpu_util.createWebGLContext(canvas);
   const gpgpu = new GPGPUContext(gl);
   const math = new NDArrayMathGPU(gpgpu);
-    const mathCPU = new NDArrayMathCPU(); //eslint-disable-line
+  const mathCPU = new NDArrayMathCPU(); //eslint-disable-line
 
   const aboutText = document.querySelector(`.about-txt`);
   const aboutBtnStart = document.querySelector(`.start-btn`);
   const logoAnim = document.querySelector(`.stranger-logo`);
   const backBtn = document.querySelector(`.back-btn`);
+  const createqr = document.querySelector(`.createQR`);
 
   const contentImgElement = document.querySelector(`.contentImg`);
+
+  document.querySelector(`.start-btn`).disabled = true;
 
   contentImgElement.src = `../assets/img/stata.jpg`;
   contentImgElement.height = 250;
 
-  const selectedStyleName = getRandomStyle();
+  const selectedStyleName = STYLE_MAPPINGS[`Stranger Things`];
 
   const transformNet = new TransformNet(math, STYLE_MAPPINGS[selectedStyleName]);
 
@@ -79,13 +87,15 @@ const main = () => {
       contentImgElement.src = target.result;
     });
 
-      // TODO: check readAsBinaryString, avoid limit for 1MB+ images
     fileReader.readAsDataURL(file);
     fileSelect.value = ``;
 
-    const cl = new cloudinary.Cloudinary({cloud_name: cloudName, secure: true}); //eslint-disable-line
+    const cl = new cloudinary.Cloudinary({cloud_name: cloudName, secure: true});
     console.log(cl);
+    document.querySelector(`.start-btn`).disabled = false;
   });
+
+  document.querySelector(`.fileSelect-btn`).addEventListener(`click`, () => {fileSelect.click();});
 
   const startButton = document.querySelector(`.start`);
   startButton.addEventListener(`click`, () => {
@@ -121,10 +131,8 @@ const main = () => {
 
       const inferenceResult = await transformNet.predict(preprocessed);
       setCanvasShape(inferenceResult.shape);
-        const renderShader = render_ndarray_gpu_util.getRenderRGBShader( //eslint-disable-line
-            gpgpu, inferenceResult.shape[1]);
-        render_ndarray_gpu_util.renderToCanvas( //eslint-disable-line
-            gpgpu, renderShader, inferenceResult.getTexture());
+      const renderShader = render_ndarray_gpu_util.getRenderRGBShader(gpgpu, inferenceResult.shape[1]);
+      render_ndarray_gpu_util.renderToCanvas(gpgpu, renderShader, inferenceResult.getTexture());
 
       new VR(canvas.toDataURL());
 
@@ -148,6 +156,8 @@ const main = () => {
     logoAnim.classList.remove(`logo-reversefade`);
     backBtn.classList.add(`hide`);
     document.body.removeChild(document.querySelector(`.vr`));
+    createqr.classList.add(`hide`);
+    createqr.innerHTML = ``;
   };
 
 
@@ -174,13 +184,17 @@ const main = () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
         // File uploaded successfully
         const response = JSON.parse(xhr.responseText);
-        console.log(response);
-        document.querySelector(`.client-link`).href = `/client.html?id=${response.public_id}&format=${response.format}`;
 
         const qr = qrcode(0, `M`);
-        qr.addData(`192.168.1.7:3000/client.html?id=${response.public_id}&format=${response.format}`);
+        qr.addData(`192.168.0.94:3000/client.html?id=${response.public_id}&format=${response.format}`);
         qr.make();
-        document.getElementById(`placeHolder`).innerHTML = qr.createImgTag();
+        createqr.innerHTML = qr.createImgTag();
+        createqr.classList.remove(`hide`);
+        const span = document.createElement(`span`);
+        span.classList.add(`exp-span`);
+        span.innerHTML = `mobile VR`;
+        createqr.appendChild(span);
+
       }
     };
 
@@ -189,8 +203,5 @@ const main = () => {
     xhr.send(fd);
   };
 };
-
-
-
 
 init();

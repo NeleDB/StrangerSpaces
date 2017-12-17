@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.8/dialog-polyfill.min.js"></script>
-  <title>Stranger Things</title>
+  <title>Stranger Rooms</title>
   <script>
   WebFontConfig = {
     custom: {
       families: [
-        'Benguiat'
+        'Futura'
       ],
       urls: [
-        './assets/fonts/benguiat/benguiat.css'
+        './assets/fonts/futura/futura.css'
       ]
     }
   };
@@ -43,16 +43,17 @@
         <div class="load-btns">
           <div>
             <span class="file-size-warning"></span>
-            <input type="file" class="fileSelect"  accept="image/x-png,image/gif,image/jpeg"/>
+            <input type="button" primary raised class="fileSelect-btn" value='Upload your room'/>
+            <input type="file" class="fileSelect hide" accept="image/x-png,image/gif,image/jpeg"/>
           </div>
           <input type="button" primary raised class="start start-btn" value="STRANGERIFY MY ROOM"></input>
         </div>
       </section>
-      <button type="button" class='button back-btn hide'>Go Back</button>
+      <button type="button" class='button back-btn hide'>Escape</button>
       <section class='style-images'>
         <div class="content">
           <div class="imgContainer hide">
-            <img class="contentImg "/>
+            <img class="contentImg"/>
           </div>
         </div>
       </section>
@@ -62,9 +63,6 @@
         </div>
       </footer>
     </div>
-    <div id="placeHolder"></div>
-    <a href="" class="client-link" target="blank">Klik hier op! </a>
-
-  <script src="js/classes/particles.js"></script>
+    <div class="createQR hide"></div>
 </body>
 </html>
