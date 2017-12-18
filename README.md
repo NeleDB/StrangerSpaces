@@ -1,5 +1,3 @@
-[![GitHub language count](https://img.shields.io/github/languages/count/badges/shields.svg)](https://github.com/NeleDB/deeplearn-strangerThings)
-
 # Stranger Spaces
 
 ![Screenshot](http://i68.tinypic.com/30a3wr8.png)
@@ -17,7 +15,7 @@ Stranger Spaces is a personalised Stranger Things experience which gives you the
 - This is really heavy on your computer, so if you don’t have a strong GPU, we do not recommend uploading images above 1MB
 
 ## Credits & Thanks
-- Logan Engstrom
-- Reiichiro Nakano
+- [Logan Engstrom](https://github.com/lengstrom/fast-style-transfer)
+- [Reiichiro Nakano](https://github.com/reiinakano/fast-style-transfer-deeplearnjs)
 - Bram Moreels
-- Stranger Things people
+- Stranger Things
