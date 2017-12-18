@@ -88,7 +88,6 @@ const main = () => {
     fileSelect.value = ``;
 
     const cl = new cloudinary.Cloudinary({cloud_name: cloudName, secure: true});
-    console.log(cl);
     document.querySelector(`.start-btn`).disabled = false;
   });
 

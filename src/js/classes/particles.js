@@ -102,7 +102,6 @@ export default class Particles {
     particle.position.y += .03;
 
     for (let i = 0;i < particle.children.length;i ++) {
-      // console.log(particle.children[i]);
       particle.children[i].material.opacity = .06 * (3 + Math.sin(2 * i + time));
     }
 

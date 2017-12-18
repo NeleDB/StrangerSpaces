@@ -58,7 +58,6 @@ export default class TransformNet {
   }
 
   convTransposeLayer(input, numFilters, strides, varId) {
-    console.log(input);
     const a = input.shape, height = a[0], width = a[1];
     const newRows = height * strides;
     const newCols = width * strides;
