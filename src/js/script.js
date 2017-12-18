@@ -22,7 +22,6 @@ import Particles from './classes/Particles.js';
 
 const STYLE_MAPPINGS = {'Stranger Things': `stranger`};
 
-
 const init = () => {
   if (window.location.pathname === `/client.html`) {
     mobile();
@@ -32,14 +31,11 @@ const init = () => {
 };
 
 const mobile = () => {
-  console.log(`hello client`);
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get(`id`);
   const format = urlParams.get(`format`);
-
   const img = document.querySelector(`.sky-img`);
   const src = `https://res.cloudinary.com/${cloudName}/image/upload/${id}.${format}`;
-  console.log(src);
   img.setAttribute(`src`, src);
 };
 
@@ -53,6 +49,7 @@ const main = () => {
 
   const aboutText = document.querySelector(`.about-txt`);
   const aboutBtnStart = document.querySelector(`.start-btn`);
+  const aboutBtnLoad = document.querySelector(`.fileSelect-btn`);
   const logoAnim = document.querySelector(`.stranger-logo`);
   const backBtn = document.querySelector(`.back-btn`);
   const createqr = document.querySelector(`.createQR`);
@@ -122,7 +119,8 @@ const main = () => {
   const imageDone = () => {
     aboutText.classList.add(`hide`);
     aboutBtnStart.classList.add(`hide`);
-    logoAnim.classList.add(`logo-reversefade`);
+    aboutBtnLoad.classList.add(`hide`);
+    logoAnim.classList.add(`hide`);
   };
 
   const runInference = async () => {
@@ -143,17 +141,15 @@ const main = () => {
   };
 
   const showBackbutton = () => {
-
     backBtn.classList.remove(`hide`);
-
     backBtn.addEventListener(`click`, showBegin);
-
   };
 
   const showBegin = () => {
     aboutText.classList.remove(`hide`);
     aboutBtnStart.classList.remove(`hide`);
-    logoAnim.classList.remove(`logo-reversefade`);
+    aboutBtnLoad.classList.remove(`hide`);
+    logoAnim.classList.remove(`hide`);
     backBtn.classList.add(`hide`);
     document.body.removeChild(document.querySelector(`.vr`));
     createqr.classList.add(`hide`);
@@ -186,7 +182,11 @@ const main = () => {
         const response = JSON.parse(xhr.responseText);
 
         const qr = qrcode(0, `M`);
-        qr.addData(`https://student.howest.be/lotte.bijlsma/20172018/EXW/client.html?id=${response.public_id}&format=${response.format}`);
+        qr.addData(`192.168.0.94:3000/client.html?id=${response.public_id}&format=${response.format}`);
+
+        // DEPLOY PATH
+        // qr.addData(`https://student.howest.be/lotte.bijlsma/20172018/EXW/client.html?id=${response.public_id}&format=${response.format}`);
+
         qr.make();
         createqr.innerHTML = qr.createImgTag();
         createqr.classList.remove(`hide`);

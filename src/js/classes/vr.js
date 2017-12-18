@@ -22,7 +22,7 @@ export default class vr {
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
     this.camera.target = new THREE.Vector3(0, 0, 0);
 
-    this.sphere = new THREE.SphereGeometry(100, 100, 40);
+    this.sphere = new THREE.SphereGeometry(150, 150, 150);
     this.sphere.applyMatrix(new THREE.Matrix4().makeScale(- 1, 1, 1));
 
     this.sphereMaterial = new THREE.MeshBasicMaterial();
