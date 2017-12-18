@@ -24,9 +24,12 @@ const STYLE_MAPPINGS = {'Stranger Things': `stranger`};
 
 const bgmusic = document.querySelector(`.bgmusic`);
 
+const URL = `/nele.de.bruycker/20172018/EXW/client.html`;
+
 
 const init = () => {
-  if (window.location.pathname === `/client.html`) {
+  console.log(window.location);
+  if (window.location.pathname === `${URL}`) {
     mobile();
   } else {
     main();
@@ -187,10 +190,10 @@ const main = () => {
         const response = JSON.parse(xhr.responseText);
 
         const qr = qrcode(0, `M`);
-        qr.addData(`192.168.0.94:3000/client.html?id=${response.public_id}&format=${response.format}`);
+        // qr.addData(`192.168.0.94:3000/client.html?id=${response.public_id}&format=${response.format}`);
 
         // DEPLOY PATH
-        // qr.addData(`https://student.howest.be/lotte.bijlsma/20172018/EXW/client.html?id=${response.public_id}&format=${response.format}`);
+        qr.addData(`https://student.howest.be${URL}?id=${response.public_id}&format=${response.format}`);
 
         qr.make();
         createqr.innerHTML = qr.createImgTag();
