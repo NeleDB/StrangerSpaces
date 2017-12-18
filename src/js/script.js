@@ -22,6 +22,9 @@ import Particles from './classes/Particles.js';
 
 const STYLE_MAPPINGS = {'Stranger Things': `stranger`};
 
+const bgmusic = document.querySelector(`.bgmusic`);
+
+
 const init = () => {
   if (window.location.pathname === `/client.html`) {
     mobile();
@@ -87,7 +90,7 @@ const main = () => {
     fileReader.readAsDataURL(file);
     fileSelect.value = ``;
 
-    const cl = new cloudinary.Cloudinary({cloud_name: cloudName, secure: true});
+    new cloudinary.Cloudinary({cloud_name: cloudName, secure: true});
     document.querySelector(`.start-btn`).disabled = false;
   });
 
@@ -107,6 +110,8 @@ const main = () => {
           startButton.innerText = `Start style transfer button`;
           startButton.disabled = false;
           spinner.classList.add(`hide`);
+          bgmusic.load();
+          bgmusic.play();
         }
       ).catch(error => {
         console.log(error);
@@ -153,6 +158,7 @@ const main = () => {
     document.body.removeChild(document.querySelector(`.vr`));
     createqr.classList.add(`hide`);
     createqr.innerHTML = ``;
+    bgmusic.pause();
   };
 
 
