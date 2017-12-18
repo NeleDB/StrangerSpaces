@@ -11,6 +11,7 @@ Final Assignment for our Experimental Web Development class. Student work by [Lo
 Stranger Spaces is a personalised Stranger Things experience which gives you the opportunity to watch your own surroundings in the style of the Upside Down. As an extra; you can experience your own surrounding in VR on mobile.
 
 ## Requirements
+- A recent Google Chrome or Firefrox browser (haven't tested it on Internet Explorer)
 - Google Cardboard
 - This is really heavy on your computer, so if you don’t have a strong GPU, we do not recommend uploading images above 1MB
 
