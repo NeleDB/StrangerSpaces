@@ -1,6 +1,6 @@
 import {Scalar, CheckpointLoader, Array1D, Array3D, Array4D, NDArray, NDArrayMathGPU} from 'deeplearn'; //eslint-disable-line
 
-const GOOGLE_CLOUD_STORAGE_DIR = `${document.URL.substr(0, document.URL.lastIndexOf(`/`))  }/js/ckpts/`;
+const GOOGLE_CLOUD_STORAGE_DIR = `${document.URL.substr(0, document.URL.lastIndexOf(`/`))  }/assets/ckpts/`;
 
 export default class TransformNet {
   constructor(math, style) {
@@ -58,7 +58,6 @@ export default class TransformNet {
   }
 
   convTransposeLayer(input, numFilters, strides, varId) {
-    console.log(input);
     const a = input.shape, height = a[0], width = a[1];
     const newRows = height * strides;
     const newCols = width * strides;

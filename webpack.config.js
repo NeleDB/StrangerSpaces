@@ -16,6 +16,10 @@ const extractCSS = new ExtractTextWebpackPlugin(`css/style.css`);
 // change for production build on different server path
 const publicPath = `/`;
 
+//path production
+// const publicPath = `https://student.howest.be/nele.de.bruycker/20172018/EXW/`;
+// const publicPath = `https://student.howest.be/lotte.bijlsma/20172018/EXW/`;
+
 const port = 3000;
 
 const copy = new CopyWebpackPlugin([{

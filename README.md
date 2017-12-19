@@ -1,14 +1,23 @@
-# Stranger Things ft. Deep Learning
+# Stranger Spaces
 
-A personalized Stranger Things experience with deep learning (Style Transfer), WebVR and Three.js. The Style Transfer technique gives you the opportunity to view your own surroundings in the style of the Upside Down.
+![Screenshot](http://i68.tinypic.com/30a3wr8.png)
 
-## Style training
-We were not yet able to train our own style, because our GPU's weren't strong enough and we couldn't get our hands on a stronger computer. If you want to help us with the training send us a mail at either
-lotte.bijlsma@student.howest.be or nele.de.bruycker@student.howest.be
+Final Assignment for our Experimental Web Development class. Student work by [Lotte Bijlsma](https://github.com/lottebijlsma) and [Nele De Bruycker](https://github.com/NeleDB).
 
-For now the style used is a pretrained model.
+## Brief
+> Create an Experimental Web App which combines a technology covered in class (WEBGL, Sockets, WebRTC) with a new technology from this list: Service Workers, Web Midi, Web Audio, WebVR, Deep Learning / Machine Learning, asm.js
 
-## Credits
+## Concept & Technologies
+Stranger Spaces is a personalised Stranger Things experience which gives you the opportunity to watch your own surroundings in the style of the Upside Down. As an extra; you can experience your own surrounding in VR on mobile.
 
-- Reiichiro Nakano for the his open source code, which has an implementation of the Fast Neural Style Transfer algorithm running fully inside a browser using the Deeplearn.JS library and which made it easy to use for us as web development students.
-- Logan Engstrom
+## Requirements
+- A recent Google Chrome or Firefrox browser (haven't tested it on Internet Explorer)
+- Google Cardboard
+- This is really heavy on your computer, so if you don’t have a strong GPU, we do not recommend uploading images above 1MB
+
+## Credits & Thanks
+- [Logan Engstrom](https://github.com/lengstrom/fast-style-transfer)
+- [Reiichiro Nakano](https://github.com/reiinakano/fast-style-transfer-deeplearnjs)
+- [Wouter Verweirder](https://github.com/wouterverweirder), for helping us out where needed
+- Bram Moreels, for granting us access to a kickass GPU
+- Assets © Stranger Things
