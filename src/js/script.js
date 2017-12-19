@@ -26,7 +26,7 @@ const bgmusic = document.querySelector(`.bgmusic`);
 
 //DEPLOY PATH
 // const URL = `/nele.de.bruycker/20172018/EXW/client.html`;
-const URL = `client.html`;
+const URL = `/client.html`;
 
 //IP Path + port to run local
 const IP = `192.168.0.247:3000`;
@@ -34,7 +34,7 @@ const IP = `192.168.0.247:3000`;
 
 const init = () => {
   console.log(window.location);
-  if (window.location.pathname === `${URL}`) {
+  if (window.location.pathname === URL) {
     mobile();
   } else {
     main();
@@ -200,7 +200,7 @@ const main = () => {
         // qr.addData(`https://student.howest.be${URL}?id=${response.public_id}&format=${response.format}`);
 
         //Local path
-        qr.addData(`${IP}?id=${response.public_id}&format=${response.format}`);
+        qr.addData(`${IP}/client.html?id=${response.public_id}&format=${response.format}`);
 
         qr.make();
         createqr.innerHTML = qr.createImgTag();
