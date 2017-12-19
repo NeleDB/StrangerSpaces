@@ -2,31 +2,51 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/css/style.css">
+  <meta name="author" content="Nele De Bruycker">
+  <meta name="author" content="Lotte Bijlsma">
+  <meta name="description" content="A Stranger Things Experience: Transform your space into the Upside Down">
+  <meta name="keywords" content="Style transfer, deeplearn, threejs, Stranger Things, devine, WebVR, Aframe, Lotte Bijlsma, Nele De Bruycker, experimental web">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="./assets/img/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./assets/img/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./assets/img/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./assets/img/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./assets/img/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./assets/img/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./assets/img/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./assets/img/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.8/dialog-polyfill.min.js"></script>
-  <title>Stranger Things</title>
+  <title>Stranger Spaces</title>
   <script>
   WebFontConfig = {
     custom: {
       families: [
-        'Benguiat'
+        'Futura'
       ],
       urls: [
-        './assets/fonts/benguiat/benguiat.css'
+        './assets/fonts/futura/futura.css'
       ]
     }
   };
 
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = 'js/webfontloader.js';
-    wf.type = 'text/javascript';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })();
+  (function(d) {
+  var wf = d.createElement('script'), s = d.scripts[0];
+  wf.async = true;
+  wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js';
+  s.parentNode.insertBefore(wf, s);
+  })(document);
   </script>
 </head>
-<body>
+<body class="background-desktop">
   <div class="style-tranfer-container"></div>
     <div id='world'></div>
     <div class="spinner hide">
@@ -38,19 +58,22 @@
       <div class='stranger-logo'>
         <img src="./assets/img/logo.png" alt="">
       </div>
-
       <section class='about'>
         <p class='about-txt'>Always wanted to know what your room would look like in the Upside Down? Upload a 360° picture and experience it now.</p>
         <div class="load-btns">
-              <input type="file" class="fileSelect"  accept="image/x-png,image/gif,image/jpeg"/>
+          <div>
+            <span class="file-size-warning"></span>
+            <input type="button" primary raised class="fileSelect-btn" value='Upload your room'/>
+            <input type="file" class="fileSelect hide" accept="image/x-png,image/gif,image/jpeg"/>
+          </div>
           <input type="button" primary raised class="start start-btn" value="STRANGERIFY MY ROOM"></input>
         </div>
       </section>
-      <button type="button" class='button back-btn hide'>Go Back</button>
+      <button type="button" class='button back-btn hide'>Escape</button>
       <section class='style-images'>
         <div class="content">
           <div class="imgContainer hide">
-            <img class="contentImg "/>
+            <img class="contentImg"/>
           </div>
         </div>
       </section>
@@ -60,9 +83,7 @@
         </div>
       </footer>
     </div>
-
-  <script type="text/javascript" src="js/three.min.js"></script>
-  <script src="js/classes/particles.js"></script>
-
+    <div class="createQR hide"></div>
+    <audio class='bgmusic' src='./assets/audio/bgmusic.mp3'/>
 </body>
 </html>
