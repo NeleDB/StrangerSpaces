@@ -24,7 +24,12 @@ const STYLE_MAPPINGS = {'Stranger Things': `stranger`};
 
 const bgmusic = document.querySelector(`.bgmusic`);
 
-const URL = `/nele.de.bruycker/20172018/EXW/client.html`;
+//DEPLOY PATH
+// const URL = `/nele.de.bruycker/20172018/EXW/client.html`;
+const URL = `client.html`;
+
+//IP Path + port to run local
+const IP = `192.168.0.247:3000`;
 
 
 const init = () => {
@@ -64,7 +69,6 @@ const main = () => {
 
   document.querySelector(`.start-btn`).disabled = true;
 
-  contentImgElement.src = `../assets/img/stata.jpg`;
   contentImgElement.height = 250;
 
   const selectedStyleName = STYLE_MAPPINGS[`Stranger Things`];
@@ -193,7 +197,10 @@ const main = () => {
         // qr.addData(`192.168.0.94:3000/client.html?id=${response.public_id}&format=${response.format}`);
 
         // DEPLOY PATH
-        qr.addData(`https://student.howest.be${URL}?id=${response.public_id}&format=${response.format}`);
+        // qr.addData(`https://student.howest.be${URL}?id=${response.public_id}&format=${response.format}`);
+
+        //Local path
+        qr.addData(`${IP}?id=${response.public_id}&format=${response.format}`);
 
         qr.make();
         createqr.innerHTML = qr.createImgTag();
