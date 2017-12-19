@@ -18,5 +18,6 @@ Stranger Spaces is a personalised Stranger Things experience which gives you the
 ## Credits & Thanks
 - [Logan Engstrom](https://github.com/lengstrom/fast-style-transfer)
 - [Reiichiro Nakano](https://github.com/reiinakano/fast-style-transfer-deeplearnjs)
-- Bram Moreels
-- Stranger Things
+- [Wouter Verweirder](https://github.com/wouterverweirder), for helping us out where needed
+- Bram Moreels, for granting us access to a kickass GPU
+- Assets © Stranger Things
